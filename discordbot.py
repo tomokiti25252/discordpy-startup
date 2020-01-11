@@ -340,18 +340,19 @@ async def on_message_edit(before,after):
     global edit_flag
     global edit_flag2
     if edit_flag == True:
-
+        edit_flag=False
         if after.channel == t_ch and t_flag == True and after.embeds[0].description and before.embeds != after.embeds:
-            edit_flag=False
+            
             if "正解" in after.embeds[0].description:
                 await t_ch.send("::t Training")
-            await asyncio.sleep(0.2)
-            edit_flag = True
+        await asyncio.sleep(0.2)
+        edit_flag = True
 
     if edit_flag2 == True:
+        edit_flag2=False
         if after.embeds and after.embeds[0].description:
             if f"{client.user.mention}はレベルアップした！" in after.embeds[0].description:
-                edit_flag2=False
+                
                 dateTime = datetime.now(JST)
                 lv = after.embeds[0].description.split("`")[1]
                 embed = discord.Embed(
@@ -361,8 +362,8 @@ async def on_message_edit(before,after):
                 embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 \
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'botレベルアップログ'))
-                await asyncio.sleep(0.2)
-                edit_flag2 = True
+        await asyncio.sleep(0.2)
+        edit_flag2 = True
 
 
 
