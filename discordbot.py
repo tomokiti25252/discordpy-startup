@@ -361,8 +361,8 @@ async def on_message_edit(before,after):
                 embed.set_footer(text = f"{dateTime.year}年{dateTime.month}月{dateTime.day}日　{dateTime.hour}時{dateTime.minute}分{dateTime.second}秒")
                 \
                 await asyncio.gather(*(c.send(embed=embed) for c in client.get_all_channels() if c.name == 'botレベルアップログ'))
-            await asyncio.sleep(0.2)
-            edit_flag2 = True
+                await asyncio.sleep(0.2)
+                edit_flag2 = True
 
 
 
