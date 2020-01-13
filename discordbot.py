@@ -77,6 +77,11 @@ async def test_check_loop():
 @tasks.loop(seconds=60)
 async def st_loop():
     await client.change_presence(activity=discord.Game(name="t!help│ここの専属BOTです！"))
+    now = datetime.now(JST).strftime('%H:%M')
+    if now == '00:00':
+        login_ch=client.get_channel(666072661692252160)
+        
+        await login_ch.send('::login')
 
 @client.event
 async def on_ready():
